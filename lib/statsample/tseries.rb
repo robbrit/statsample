@@ -146,6 +146,10 @@ module Statsample
 
       # Calculates the MACD (moving average convergence-divergence) of the time
       # series - this is a comparison of a fast EMA with a slow EMA.
+      #
+      # Two return values:
+      # - the difference between the fast and the slow EMA
+      # - the signal line (an EMA of the first return result)
       def macd fast = 12, slow = 26, signal = 9
         series = ema(fast) - ema(slow)
         [series, series.ema(signal)]

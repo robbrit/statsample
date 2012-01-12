@@ -22,6 +22,7 @@ Include:
 * Structural Equation Modeling (SEM), using R libraries +sem+ and +OpenMx+
 * Creates reports on text, html and rtf, using ReportBuilder gem
 * Graphics: Histogram, Boxplot and Scatterplot
+* Time Series Analysis: Autocorrelation, moving averages (simple, exponential, convergence-divergence).
 
 == PRINCIPLES
 
