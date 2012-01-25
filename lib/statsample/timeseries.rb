@@ -1,3 +1,5 @@
+require "statsample"
+
 module Statsample::TimeSeriesShorthands
   # Creates a new Statsample::TimeSeries object
   # Argument should be equal to TimeSeries.new
@@ -10,6 +12,15 @@ end
 
 class Array
   include Statsample::TimeSeriesShorthands
+end
+
+class Range
+  # converts the range to a time series
+  def to_time_series(*args)
+    self.to_a.to_time_series(*args)
+  end
+
+  alias :to_ts :to_time_series
 end
 
 module Statsample

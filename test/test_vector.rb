@@ -627,4 +627,12 @@ class StatsampleTestVector < MiniTest::Unit::TestCase
     expected=[Date.new(2009,10,10), Date.today(), Date.new(2009,10,10), Date.new(2009,1,1), nil, Date.today(), nil ]
     assert_equal(expected, a.date_data_with_nils)
   end
+
+  def test_zeroes
+    assert_equal [0, 0, 0, 0, 0].to_vector, Statsample::Vector.zeroes(5)
+  end
+
+  def test_ones
+    assert_equal [1, 1, 1, 1, 1].to_vector, Statsample::Vector.ones(5)
+  end
 end

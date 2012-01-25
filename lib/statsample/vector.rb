@@ -17,6 +17,13 @@ class Array
   include Statsample::VectorShorthands
 end
 
+class Range
+  # Converts the range to a vector
+  def to_vector(*args)
+    self.to_a.to_scale(*args)
+  end
+end
+
 if Statsample.has_gsl?
   module GSL
     class Vector
@@ -1035,5 +1042,23 @@ module Statsample
     alias_method :sd, :standard_deviation_sample
     alias_method :ss, :sum_of_squares
     include_aliasing Statsample::Vector::GSL_ if Statsample.has_gsl?
+
+    ########################
+    # Helper Class Methods #
+    ########################
+    
+    # Gets a vector of zeroes with length n
+    #
+    # Vector.zeroes 5  # => [0, 0, 0, 0, 0]
+    def self.zeroes n
+      ([0] * n).to_scale
+    end
+
+    # Gets a vector of ones with length n
+    #
+    # Vector.ones 5    # => [1, 1, 1, 1, 1]
+    def self.ones n
+      ([1] * n).to_scale
+    end
   end
 end
