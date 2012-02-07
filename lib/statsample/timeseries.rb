@@ -23,6 +23,14 @@ class Range
   alias :to_ts :to_time_series
 end
 
+if Statsample.has_gsl?
+  module GSL
+    class Vector
+      include Statsample::TimeSeriesShorthands
+    end
+  end
+end
+
 module Statsample
   module TimeSeries
     # Collection of data indexed by time.
